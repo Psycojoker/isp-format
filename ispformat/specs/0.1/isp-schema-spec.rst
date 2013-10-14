@@ -38,7 +38,7 @@ The ISP format is meant to allow an ISP to share relevant data and informations,
 
 2. JSON Schema definition of the format
 =======================================
-.. include:: schema/0.1/isp.json
+.. include:: ../schema/0.1/isp.json
     :literal:
 
 
