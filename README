@@ -1,1 +1,13 @@
-TODO
+
+How to use the validator 
+========================
+
+Preferably in a virtualenv, run:
+
+    python setup.py install
+
+Then, you should be able to use the validator:
+
+    isp-format-validator target.json
+
+
