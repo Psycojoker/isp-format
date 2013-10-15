@@ -13,7 +13,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 setup(
     name = 'isp-format',
     version = VERSION,
-    packages = ['ispformat.validator', 'ispformat.schema', 'ispformat.specs'],
+    packages = ['ispformat', 'ispformat.validator', 'ispformat.schema', 'ispformat.specs'],
     include_package_data = True,
     scripts = ['ispformat/bin/isp-format-validator'],
     license = '2-clause BSD License',
