@@ -32,7 +32,7 @@ The ISP format is meant to allow an ISP to share relevant data and informations,
 ----------------
 * The ISP format itself is based on the JSON data format. The JavaScript Object Notation (JSON) format and its basic types are defined in [RFC4627]_.
 * The ISP format is mostly specified as a JSON Schema file, a JSON-based format for defining the structure of JSON data. JSON Schema is defined in the following IETF draft [json-schema-04]_.
-* HTTP... [RFC2616]_.
+* The ISP format relies on HTTP/1.1 for data transfer [RFC2616]_.
 * The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC2119]_.
 
 
