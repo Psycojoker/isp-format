@@ -42,8 +42,18 @@ The ISP format is meant to allow an ISP to share relevant data and informations,
     :literal:
 
 
-3. Implementating the format
-============================
+3. Properties and objects definition
+====================================
+
+3.1 coveredArea.area
+=====================
+The "area" key of a coveredArea object, is meant to represent a geographic area covered by the ISP. When present, it must contain a valid GeoJSON object, as defined in [geojson-spec]_.
+
+As an additional restriction, it MUST only contain GeoJSON geometries of type Polygon, MultiPolygon or GeometryCollection.
+
+
+4. Implementing the format
+==========================
 
 An ISP implementing the ISP format MUST serve the file as a valid HTTP ressource named isp.json placed at the root (/) of its HTTP server.
 
@@ -56,7 +66,7 @@ The ressource SHOULD be reachable over HTTPS ([RFC2818]_).
 The ressource MUST be served over HTTP version 1.1.
 
 
-3.1 Caching considerations
+4.1 Caching considerations
 --------------------------
 
 The HTTP ressource SHOULD provide an expiration time, either through the Cache-Control header's max-age directive or the Expires header.
@@ -70,7 +80,7 @@ A client may choose to cache the response for a low amount of time even in cases
 Additionally, a ressource SHOULD implement conditional requests by providing an ETag or Last-Modified header and responding to the If-Modified-Since or If-None-Match request headers properly.
 
 
-3. References
+5. References
 =============
 
 .. [RFC4627] Crockford, D., "The application/json Media Type for JavaScript Object Notation (JSON)",
@@ -81,6 +91,7 @@ Additionally, a ressource SHOULD implement conditional requests by providing an 
              "Hypertext Transfer Protocol -- HTTP/1.1", `RFC 2616 <http://tools.ietf.org/html/rfc2616>`_, June 1999.
 .. [RFC2119] Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", `RFC 2119 <http://tools.ietf.org/html/rfc2119>`_, March 1997.
 .. [RFC2818] Rescorla, E., "HTTP Over TLS", `RFC 2818 <https://tools.ietf.org/html/rfc2818>`_, May 2000.
+.. [geojson-spec] The `GeoJSON Format Specification 1.0 <http://geojson.org/geojson-spec.html>`_, 16 June 2008.
 
 
 Appendix A. ISPs Examples

@@ -14,6 +14,24 @@ class MyRefResolver(RefResolver):
         raise RefResolutionError("LOL NOPE")
 
 
+geojson_allowed_types=('Polygon', 'MultiPolygon', 'GeometryCollection')
+def validate_geojson(_d):
+    """
+    Make sure a geojson dict only contains allowed geometry types
+    """
+    def inner(d):
+        type_=d.get('type')
+        if type_ not in geojson_allowed_types:
+            return False
+        if type_ == 'GeometryCollection':
+            for d2 in d['geometries']:
+                if not inner(d2):
+                    return False
+        return True
+
+    return inner(_d)
+
+
 def validate_isp(jdict):
     """
     Validate a json-object against the isp json-schema
@@ -66,4 +84,14 @@ def validate_isp(jdict):
                               schema_path=[u'properties', u'otherWebsites', u'patternProperties', u'^.+$', 'description'],
                               validator=u'validate_url', validator_value=url)
 
+    for i, ca in enumerate(jdict.get('coveredAreas', [])):
+        if validate_geojson(ca.get('area', {})):
+            continue
+        yield ValidationError(
+            u'GeoJSON can only contain the following types: %s'%repr(geojson_allowed_types),
+            instance=ca, schema=schema[u'definitions'][u'coveredArea'][u'properties'][u'area'],
+            path=['coveredAreas', i, 'area'],
+            schema_path=[u'properties', u'coveredAreas', u'items', u'properties', u'area'],
+            validator=u'validate_geojson', validator_value=ca
+        )
 
