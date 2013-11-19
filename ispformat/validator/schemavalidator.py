@@ -14,22 +14,15 @@ class MyRefResolver(RefResolver):
         raise RefResolutionError("LOL NOPE")
 
 
-geojson_allowed_types=('Polygon', 'MultiPolygon', 'GeometryCollection')
-def validate_geojson(_d):
+geojson_allowed_types=('Polygon', 'MultiPolygon')
+def validate_geojson(d):
     """
     Make sure a geojson dict only contains allowed geometry types
     """
-    def inner(d):
-        type_=d.get('type')
-        if type_ not in geojson_allowed_types:
-            return False
-        if type_ == 'GeometryCollection':
-            for d2 in d['geometries']:
-                if not inner(d2):
-                    return False
-        return True
-
-    return inner(_d)
+    type_=d.get('type')
+    if type_ not in geojson_allowed_types:
+        return False
+    return True
 
 
 def validate_isp(jdict):

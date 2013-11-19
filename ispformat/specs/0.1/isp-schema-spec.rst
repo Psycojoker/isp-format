@@ -49,7 +49,7 @@ The ISP format is meant to allow an ISP to share relevant data and informations,
 =====================
 The "area" key of a coveredArea object, is meant to represent a geographic area covered by the ISP. When present, it must contain a valid GeoJSON object, as defined in [geojson-spec]_.
 
-As an additional restriction, it MUST only contain GeoJSON geometries of type Polygon, MultiPolygon or GeometryCollection.
+As an additional restriction, it MUST only contain GeoJSON geometries of type Polygon or MultiPolygon.
 
 
 4. Implementing the format
