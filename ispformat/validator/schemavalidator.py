@@ -78,8 +78,12 @@ def validate_isp(jdict):
                               validator=u'validate_url', validator_value=url)
 
     for i, ca in enumerate(jdict.get('coveredAreas', [])):
-        if validate_geojson(ca.get('area', {})):
+        area=ca.get('area')
+        if area and validate_geojson(area):
             continue
+        elif not area:
+            continue
+
         yield ValidationError(
             u'GeoJSON can only contain the following types: %s'%repr(geojson_allowed_types),
             instance=ca, schema=schema[u'definitions'][u'coveredArea'][u'properties'][u'area'],
