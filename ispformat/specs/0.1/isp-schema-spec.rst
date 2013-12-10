@@ -45,9 +45,23 @@ The ISP format is meant to allow an ISP to share relevant data and informations,
 3. Properties and objects definition
 ====================================
 
-3.1 coveredArea.area
+3.1 progressStatus
+==================
+This field is an enum specifiying the progress status of the ISP.
+
+Here is the definition of the values::
+
+  1. Project considered
+  2. Primary members found
+  3. Legal structure being created
+  4. Legal structure created
+  5. Base tools created (bank account, first members)
+  6. ISP partially functional (first subscribers, maybe in degraded mode)
+  7. ISP fully working
+
+3.2 coveredArea.area
 =====================
-The "area" key of a coveredArea object, is meant to represent a geographic area covered by the ISP. When present, it must contain a valid GeoJSON object, as defined in [geojson-spec]_.
+The "area" key of a coveredArea object is meant to represent a geographic area covered by the ISP. When present, it must contain a valid GeoJSON object, as defined in [geojson-spec]_.
 
 As an additional restriction, it MUST only contain GeoJSON geometries of type Polygon or MultiPolygon.
 
