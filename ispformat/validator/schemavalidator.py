@@ -15,13 +15,34 @@ class MyRefResolver(RefResolver):
 
 
 geojson_allowed_types=('Polygon', 'MultiPolygon')
-def validate_geojson(d):
+def validate_geojson_type(d):
     """
     Make sure a geojson dict only contains allowed geometry types
     """
     type_=d.get('type')
     if type_ not in geojson_allowed_types:
         return False
+    return True
+
+
+def validate_geojson(geodict):
+    """
+    Convenience function to validate a geojson dict
+    """
+    _version = 0.1
+    schema = _schema.load_schema(_version, 'geojson/geojson')
+    v = Draft4Validator(
+        schema,
+        resolver=MyRefResolver.from_schema(schema, store=_schema.deps_for_version(_version)),
+        format_checker=draft4_format_checker,
+    )
+
+    for err in v.iter_errors(geodict):
+        return False
+
+    if not validate_geojson_type(geodict):
+        return False
+
     return True
 
 
@@ -79,7 +100,7 @@ def validate_isp(jdict):
 
     for i, ca in enumerate(jdict.get('coveredAreas', [])):
         area=ca.get('area')
-        if area and validate_geojson(area):
+        if area and validate_geojson_type(area):
             continue
         elif not area:
             continue
@@ -89,6 +110,6 @@ def validate_isp(jdict):
             instance=ca, schema=schema[u'definitions'][u'coveredArea'][u'properties'][u'area'],
             path=['coveredAreas', i, 'area'],
             schema_path=[u'properties', u'coveredAreas', u'items', u'properties', u'area'],
-            validator=u'validate_geojson', validator_value=ca
+            validator=u'validate_geojson_type', validator_value=ca
         )
 
