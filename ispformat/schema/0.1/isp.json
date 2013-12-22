@@ -35,8 +35,7 @@
             "type": "object",
             "patternProperties": {
                 "^.+$": { "type": "string", "format": "uri" }
-            },
-            "additionalProperties": false
+            }
         },
         "email": {
             "description": "Contact email address",
@@ -113,8 +112,7 @@
                 "area": {
                     "$ref": "http://json-schema.org/geojson/geojson.json#"
                 }
-            },
-            "additionalProperties": false
+            }
         }
     }
 }
