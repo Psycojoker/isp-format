@@ -12,7 +12,7 @@ Schema specification & implementation guidelines
 :Revision:
     draft-1 (0.1)
 :Date:
-    October 2013
+    December 2013
 
 
 **Abstract:**
@@ -110,4 +110,85 @@ Additionally, a ressource SHOULD implement conditional requests by providing an 
 
 Appendix A. ISPs Examples
 =========================
-TODO
+This is a minimal implementation example::
+
+    {
+        "name": "Oz Rural Fiber",
+        "email": "dorothy@ozfiber.net",
+        "memberCount": 8,
+        "subscriberCount": 3,
+        "coveredAreas": [
+            {
+                "name": "Munchkin Country",
+                "technologies": ["ftth"],
+            },
+            {
+                "name": "Yellow brick road",
+                "technologies": ["wifi"],
+            }
+        ],
+        "version": 0.1
+    }
+
+Here is another, more complete example::
+
+    {
+        "shortname": "MDN",
+        "name": "Middle-earth Data Network",
+        "description": "Non-profit ISP located in the Middle-earth",
+        "logoURL": "https://www.mdn.net/logo.png",
+        "website": "https://www.mdn.net/",
+        "otherWebsites": {
+            "wiki": "http://wiki.mdn.net"
+        },
+        "email": "contact@mdn.net",
+        "mainMailingList": "public@lists.mdn.net",
+        "creationDate": "1892-01-03",
+        "progressStatus": 7,
+        "memberCount": 600,
+        "subscriberCount": 86,
+        "chatrooms": [
+            "irc://irc.freenode.net/#mdn",
+            "xmpp:members@chat.mdn.net?join"
+        ],
+        "registeredOffice": {
+            "extended-addess": "third hobbit-hole on the left",
+            "street-address": "1 Main Street",
+            "locality": "Hobbiton",
+            "region": "Westfarthing",
+            "postal-code": "??",
+            "country-name": "The Shire"
+        },
+        "coordinates": {
+            "latitude": 3.14159265,
+            "longitude": 1.57079632
+        },
+        "coveredAreas": [
+            {
+                "name": "Mordor",
+                "technologies": ["wifi"],
+                "area": {
+                    "type": "Polygon",
+                    "coordinates": [[
+                        [ -35.5078125, 18.646245142670608 ],
+                        [ -35.5078125, 56.559482483762245 ],
+                        [ 63.984375, 56.559482483762245 ],
+                        [ 63.984375, 18.646245142670608 ],
+                        [ -35.5078125, 18.646245142670608 ]
+                    ]]
+                }
+            },
+            {
+                "name": "The Shire",
+                "technologies": ["dsl"]
+            }
+        ],
+        "version": 0.1
+    }
+
+
+Revision History
+============================
+
+Version 0.1 (2013-12-23)
+    Initial relase of this document.
