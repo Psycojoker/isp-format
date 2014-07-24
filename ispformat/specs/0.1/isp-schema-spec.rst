@@ -187,8 +187,21 @@ Here is another, more complete example::
     }
 
 
+Appendix B. Where to find GeoJSON for covered areas
+====================================================
+
+For France, you can use the GeoJSON files at https://github.com/ymarcon/gadm/tree/master/FR_adm/ (where adm1 is for region ; 2 for départment ; 4 for city). Find the JSON block corresponding to your ISP's covered area and then, copy and paste only the :code:`{ "type": "Polygon", [ ... ] }` block. Beware: only one :code:`}` at the end !
+
+For the rest of the world, you can try to use nominatim: http://nominatim.openstreetmap.org/search.php?q=QUERY&polygon_geojson=1&format=json (where QUERY is state/city name) using the same method (only copy/paste the "MultiPolygon" block).
+
+Please note that the GeoJSON produced by nominatim might not be completely supported by some GIS like Spatialite which is used by the reference implementation. This could cause errors like "Unable to store GeoJSON in database".
+
+
 Revision History
 ============================
+
+Version 0.1.1 (2014-07-24)
+    Added Appendix B. which contain some pointers on where to find GeoJSON for covered areas (lg).
 
 Version 0.1 (2013-12-23)
     Initial relase of this document.
