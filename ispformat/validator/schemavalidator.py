@@ -53,8 +53,8 @@ def validate_isp(jdict):
     if not 'version' in jdict:
         raise ValidationError(u'version is a required property')
     try:
-        schema=_schema.versions.get(jdict['version'])
-    except (AttributeError, TypeError):
+        schema=_schema.versions[jdict['version']]
+    except (AttributeError, TypeError, KeyError):
         raise ValidationError(u'version %r unsupported'%jdict['version'])
 
     v=Draft4Validator(
