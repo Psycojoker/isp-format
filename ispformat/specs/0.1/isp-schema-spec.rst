@@ -60,11 +60,26 @@ Here is the definition of the values::
   7. ISP fully working
 
 3.2 coveredArea.area
-=====================
+====================
 The "area" key of a coveredArea object is meant to represent a geographic area covered by the ISP. When present, it must contain a valid GeoJSON object, as defined in [geojson-spec]_.
 
 As an additional restriction, it MUST only contain GeoJSON geometries of type Polygon or MultiPolygon.
 
+3.3 coveredArea.technologies
+============================
+The "technologies" key of a coveredArea object MUST contain a list of technologies provided in that area.
+Here is a more complete definition of the allowed values for this field:
+
+ftth
+  Fiber to the home.
+fttb
+  Fiber to the building. Fiber reaches the boundary of the building with the final connection to the individual living space being made via alternative means.
+dsl
+  Internet access provided over a phone line. This encompass ADSL, VDSL, SDSL and all the other xDSL technologies.
+wifi
+  Internet access provided over Wi-Fi.
+
+This list is not exhaustive. Please contact us to add more.
 
 4. Implementing the format
 ==========================
@@ -199,6 +214,10 @@ Please note that the GeoJSON produced by nominatim might not be completely suppo
 
 Revision History
 ============================
+
+Version 0.1.2 (2014-07-24)
+    Added "fttb" as a possible technology (AG DSN).
+    Added section 3.3 with complete definitions for each allowed value for the ``coveredArea.technologies`` field.
 
 Version 0.1.1 (2014-07-24)
     Added Appendix B. which contain some pointers on where to find GeoJSON for covered areas (lg).
