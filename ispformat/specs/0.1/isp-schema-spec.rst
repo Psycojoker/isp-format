@@ -80,6 +80,8 @@ wifi
   Internet access provided over Wi-Fi.
 vpn
   Virtual Private Network access.
+cube
+  Self-hosting box in the spirit of the Freedombox.
 
 This list is not exhaustive. Please contact us to add more.
 

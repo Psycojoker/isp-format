@@ -107,7 +107,7 @@
                 },
                 "technologies": {
                     "type": "array",
-                    "items": { "enum": [ "ftth", "fttb", "dsl", "wifi", "vpn" ] }
+                    "items": { "enum": [ "ftth", "fttb", "dsl", "wifi", "vpn", "cube" ] }
                 },
                 "area": {
                     "$ref": "http://json-schema.org/geojson/geojson.json#"
