@@ -112,4 +112,3 @@ def validate_isp(jdict):
             schema_path=[u'properties', u'coveredAreas', u'items', u'properties', u'area'],
             validator=u'validate_geojson_type', validator_value=ca
         )
-
