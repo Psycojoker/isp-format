@@ -2,9 +2,7 @@
 
 import ispformat.schema as _schema
 from jsonschema import Draft4Validator, RefResolver, draft4_format_checker
-from jsonschema.exceptions import RefResolutionError, SchemaError, ValidationError
-import json
-import os.path
+from jsonschema.exceptions import RefResolutionError, ValidationError
 from urlparse import urlsplit
 
 
