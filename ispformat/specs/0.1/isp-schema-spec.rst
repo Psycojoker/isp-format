@@ -78,6 +78,8 @@ dsl
   Internet access provided over a phone line. This encompass ADSL, VDSL, SDSL and all the other xDSL technologies.
 wifi
   Internet access provided over Wi-Fi.
+vpn
+  Virtual Private Network access.
 
 This list is not exhaustive. Please contact us to add more.
 
